@@ -3,19 +3,44 @@ function getComputerChoice() {
     let computerChoice;
 
     if (randomNumber === 1) {
-        computerChoice = "Rock";
+        computerChoice = "rock";
     } else if (randomNumber === 2) {
-        computerChoice = "Paper";
+        computerChoice = "paper";
     } else {
-        computerChoice = "Scissors";
+        computerChoice = "scissors";
     }
 
     return computerChoice;
 }
-console.log(getComputerChoice())
 
 function getHumanChoice() {
     let humanChoice = prompt("Select: Rock/Paper/Scissors")
+    humanChoice = humanChoice.toLowerCase()
     return humanChoice
 }
-console.log(getHumanChoice())
+
+let humanScore = 0;
+let computerScore = 0;
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(humanScore)
+console.log(computerScore)
+console.log(humanSelection)
+console.log(computerSelection)
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === "rock" && computerChoice=== "scissors" || 
+        humanChoice === "paper" && computerChoice === "rock" || 
+        humanChoice === "scissors" && computerChoice === "paper"){
+        console.log("You won the round")
+        humanScore += 1;
+    } else if (humanChoice === computerChoice){
+        console.log("Its a tie")
+    } else {
+        console.log("You lose The round")
+        computerScore += 1;
+    }
+}
+
+console.log(playRound(humanSelection, computerSelection))
